@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.css'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import Pagination, { PaginationProps } from '../components/Pagination'
@@ -44,7 +45,7 @@ export default function App() {
         <title>Entera School Search</title>
       </Head>
 
-      <main>
+      <main className="m-3">
         <SearchBar />
         <SearchResultList schools={searchResult}/>
         { searchMetadata ? <Pagination {...searchMetadata } />: null }

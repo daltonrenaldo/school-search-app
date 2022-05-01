@@ -20,10 +20,10 @@ export default class SearchBar extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="mb-3">
         <form onSubmit={this.onSearch}>
-          <input ref={this.queryInput} type='text' name='q' id='search-bar' placeholder='Search School Name' autoComplete='off'/>
-          <input type="submit" />
+          <input className="form-control" ref={this.queryInput} type='text' name='q' id='search-bar' placeholder='Search School Name' autoComplete='off'/>
+          <input className="d-none" type="submit" />
         </form>
       </div>
     )

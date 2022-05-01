@@ -22,10 +22,12 @@ export default class SchoolCard extends React.Component<SchoolCardProps> {
 
   render() {
     return (
-      <div className="card mb-3">
+      <div className="card mb-3" style={{ maxWidth: 650 }}>
         <div className="row g-0">
           <div className="col-md-4">
-            <img src={ this.props.mapUrl } className="img-fluid rounded-start" alt="map"/>
+            <a href={this.props.website} target="_blank">
+              <img src={ this.props.mapUrl } className="img-fluid rounded-start" alt="map"/>
+            </a>
           </div>
           <div className="col-md-8">
             <div className="card-body">

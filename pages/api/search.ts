@@ -32,7 +32,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         state: result['school.state'],
         city: result['school.city'],
         zip: result['school.zip'],
-        mapUrl: `https://maps.googleapis.com/maps/api/staticmap?center=${result['location.lat']},${result['location.lon']}&zoom=12&size=400x400&key=${process.env.MAPS_API_KEY}`,
+        mapUrl: `https://maps.googleapis.com/maps/api/staticmap?center=${result['location.lat']},${result['location.lon']}&zoom=12&size=400x200&key=${process.env.MAPS_API_KEY}`,
         website: result['school.school_url']
       }      
     });
