@@ -1,26 +1,19 @@
 import React from 'react';
-import SchoolCard from './SchoolCard';
+import SchoolCard, { SchoolCardProps } from './SchoolCard';
 
-export default class SearchResultList extends React.Component {
+export interface SearchResultListProps {
+  schools: SchoolCardProps[]
+}
+
+export default class SearchResultList extends React.Component<SearchResultListProps> {
   render() {
     return (
       <div>
-        <SchoolCard
-          website='https://google.com'
-          state='CT' 
-          name='Test School' 
-          mapUrl='https://maps.googleapis.com/maps/api/staticmap?center=40.747747,-73.983492&zoom=12&size=400x400&key=REPLACE_ME'
-          zip='10000'
-          city='Somewhere'
-        />
-        <SchoolCard
-          website='https://google.com'
-          state='CT'
-          name='Test School'
-          mapUrl='https://maps.googleapis.com/maps/api/staticmap?center=40.747747,-73.983492&zoom=12&size=400x400&key=REPLACE_ME'
-          zip='10000'
-          city='Somewhere'
-        />
+        {
+          this.props.schools.map(school => (
+            <SchoolCard key={school.id} {...school}></SchoolCard>
+          ))
+        }
       </div>
     )
   }

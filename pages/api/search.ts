@@ -22,8 +22,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const response = await fetch(url.toString(), { method: "GET" });
     const result = await response.json();
-    result.results.forEach((school) => {
-      school.map = `https://maps.googleapis.com/maps/api/staticmap?center=${school['location.lat']},${school['location.lon']}&zoom=12&size=400x400&key=${process.env.MAPS_API_KEY}`
+    result.results = result.results.map((result) => {
+      return {
+        id: result.id,
+        name: result['school.name'],
+        state: result['school.state'],
+        city: result['school.city'],
+        zip: result['school.zip'],
+        mapUrl: `https://maps.googleapis.com/maps/api/staticmap?center=${result['location.lat']},${result['location.lon']}&zoom=12&size=400x400&key=${process.env.MAPS_API_KEY}`,
+        website: result['school.school_url']
+      }      
     });
     res.status(200).json(result);
   } catch(e) {

@@ -1,6 +1,7 @@
 import React from 'react';
 
 export interface SchoolCardProps {
+  id: string;
   name: string;
   mapUrl?: string;
   state: string;
