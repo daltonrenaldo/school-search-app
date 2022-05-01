@@ -4,6 +4,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const searchQuery = req.query.q as string;
+  const page = req.query.page as string || '0';
+
   const buildUrl = (baseUrl: string, params: Record<string, string>): URL => {
     const url = new URL(baseUrl);
     for (let key in params) {
@@ -16,7 +18,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     api_key: process.env.SCHOOL_API_KEY,
     per_page: '10',
     fields: 'id,school.name,school.state,school.city,school.zip,school.school_url,location',
-    'school.name': searchQuery
+    'school.name': searchQuery,
+    page
   });
 
   try {
